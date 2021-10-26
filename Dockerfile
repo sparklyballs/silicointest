@@ -51,7 +51,7 @@ RUN \
 		/var/tmp/*
 
 # set workdir for build stage
-WORKDIR /silicoin-blockchain
+WORKDIR /sit-blockchain
 
 # set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -63,7 +63,7 @@ RUN \
 	| jq -r ".tag_name"); \
 	fi \
 	&& git clone -b "${RELEASE}" https://github.com/silicoin-network/silicoin-blockchain.git \
-		/silicoin-blockchain \		
+		/sit-blockchain \		
 	&& git submodule update --init mozilla-ca \
 	&& sh install.sh \
 	\
@@ -77,8 +77,8 @@ RUN \
 
 # set additional runtime environment variables
 ENV \
-	PATH=/silicoin-blockchain/venv/bin:$PATH \
-	CONFIG_ROOT=/root/.silicoin/mainnet
+	PATH=/sit-blockchain/venv/bin:$PATH \
+	CONFIG_ROOT=/root/.sit/mainnet
 
 # copy local files
 COPY docker-*.sh /usr/local/bin/
