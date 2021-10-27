@@ -64,6 +64,10 @@ RUN \
 	fi \
 	&& git clone -b "${RELEASE}" https://github.com/silicoin-network/silicoin-blockchain.git \
 		/sit-blockchain \		
+	&& sleep 1 \
+	&& rm /sit-blockchain/chia/consensus/blockchain.py \
+	&& curl -o /sit-blockchain/chia/consensus/blockchain.py \
+		-L "https://raw.githubusercontent.com/13thProgression/silicoin-blockchain/8f26e6a2a91fec60ae77eee5d64864a73a9b42ac/chia/consensus/blockchain.py" \
 	&& git submodule update --init mozilla-ca \
 	&& sh install.sh \
 	\
